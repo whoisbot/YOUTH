@@ -159,8 +159,8 @@ else if ($.time('HH')>4&&$.time('HH')<8){
   await gameVideo();
   await readArticle();
   await Articlered();
-   for ( k=0;k<30;k++){
-   readTime();
+   for ( k=0;k<10;k++){
+  await readTime();
     }
     
 for ( k=0;k<5;k++){
