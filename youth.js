@@ -159,7 +159,10 @@ else if ($.time('HH')>4&&$.time('HH')<8){
   await gameVideo();
   await readArticle();
   await Articlered();
-  await readTime();
+   for ( k=0;k<30;k++){
+   readTime();
+    }
+    
 for ( k=0;k<5;k++){
  console.log("等待5s进行下一次任务")
   await $.wait(5000);
