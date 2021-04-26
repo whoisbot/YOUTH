@@ -156,13 +156,13 @@ else if ($.time('HH')>4&&$.time('HH')<8){
   await comApp();
   await ArticleShare();
   await openbox();
-  await zhuliyuedu();
   await getAdVideo();
   await gameVideo();
   await readArticle();
   await Articlered();
    for ( k=0;k<10;k++){
   await readTime();
+  await zhuliyuedu();
     }
     
 for ( k=0;k<5;k++){
