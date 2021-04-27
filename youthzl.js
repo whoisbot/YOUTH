@@ -29,7 +29,7 @@ const axios = require('axios');
     'User-Agent' : 'Mozilla/5.0 (iPad; CPU OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.5(0x18000522) NetType/WIFI Language/zh_CN'} //设置header信息
     }).then((res) => { 
       //then 成功
-      console.log("ok")
+      console.log("j")
     }).catch((err) => {
       //catch 失败
       console.log("失败")
@@ -38,4 +38,5 @@ const axios = require('axios');
   }
   for(var i=0;i<10;i++){
       aa();
+       await $.wait(5000);
       }
