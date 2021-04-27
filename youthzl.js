@@ -36,8 +36,10 @@ const axios = require('axios');
     
     });
   }
-  for(var i=0;i<10;i++){
-      aa();
-      
-       await $.wait(5000);
-      }
+
+const request = function(){
+  for(let i=0;i<20;i++){
+    setTimeout(aa(),1000)
+  }
+}
+request();
