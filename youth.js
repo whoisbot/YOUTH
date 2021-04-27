@@ -154,7 +154,7 @@ else if ($.time('HH')>4&&$.time('HH')<8){
   }
   await SevCont();
   await comApp();
-  await bonusTask();
+ await bonusTask();
   await ArticleShare();
   await openbox();
   await getAdVideo();
