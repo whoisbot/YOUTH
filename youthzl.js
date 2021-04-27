@@ -38,5 +38,6 @@ const axios = require('axios');
   }
   for(var i=0;i<10;i++){
       aa();
+      
        await $.wait(5000);
       }
