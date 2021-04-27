@@ -748,7 +748,7 @@ async function showmsg() {
 
 function kdHost(api, body) {
     return {
-        url: 'https://kd.youth.cn/' + api + `&${myuid}`,
+        url: 'https://kd.youth.cn/' + api + `&51526616`,
         headers: {
             'Accept': '*/*',
             'Accept-Encoding': 'gzip, deflate, br',
