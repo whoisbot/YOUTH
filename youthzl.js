@@ -47,4 +47,4 @@ const request = async function(){
     await sleep(1000);
   }
 }
-
+request();
