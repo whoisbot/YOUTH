@@ -116,7 +116,7 @@ if ($.isNode()) {
     readArr.push($.getdata('read_zq'));
     timeArr.push($.getdata('readtime_zq'));
 }
-
+let cookieYouth = $.getdata('youthheader_zq');
 const firstcheck = $.getdata('signt');
 const runtimes = $.getdata('times');
 const opboxtime = $.getdata('opbox');
