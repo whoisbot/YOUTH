@@ -37,9 +37,12 @@ const axios = require('axios');
     });
   }
 
+
 const request = function(){
-  for(let i=0;i<20;i++){
-    setTimeout(aa(),1000)
+  for(let i=0;i<1000;i++){
+    setTimeout(function(){
+      aa()
+    },1000)
   }
 }
 request();
