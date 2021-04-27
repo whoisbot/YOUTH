@@ -42,7 +42,7 @@ const request = function(){
   for(let i=0;i<10;i++){
     setTimeout(function(){
       aa()
-    },1000)
+    },10000)
   }
 }
 request();
