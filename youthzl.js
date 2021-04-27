@@ -12,7 +12,7 @@ function randomString() {
 }
 
 
-var i = 0;
+var time= 0;
 
 var interval=setInterval(function () {
   
@@ -38,7 +38,7 @@ return axios.get(url, {
 
 
        
-  i++;
+  time+=1;
       if(i ===  10){    
         clearInterval(interval);
         }
