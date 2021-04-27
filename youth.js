@@ -162,7 +162,7 @@ else if ($.time('HH')>4&&$.time('HH')<8){
   await Articlered();
    for ( k=0;k<10;k++){
   await readTime();
-  await zhuliyuedu();
+
     }
     
 for ( k=0;k<5;k++){
@@ -382,22 +382,7 @@ function SevCont() {
         },s)
     })
 }
-//助力阅读
-function zhuliyuedu() {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-        var j=randomString();
-            const url = {
-              url: 'https://script.baertt.com/count2/callback?si='+j+'&referer=https%253A%252F%252Ffocus.youth.cn%252Farticle%252Fs%253Fsignature%253DQB5EzPY3exK9wOd7E9kvgruV6M9PFgWkqzQ78oADjvkbgZRGLV%2526uid%253D51526616%2526phone_code%253Da2823679662e562c3bb1fade2b2f3d5b%2526scid%253D37478516%2526time%253D1619453313%2526app_version%253D2.0.2%2526sign%253Db2787ec49cfd5780220a22c041d1c051&_=1619453342283&jsonpcallback=jsonp5',headers: { Host: 'script.baertt.com'},
-            }
-            $.get(url,async(error, response, data) => {
-                console.log('助力成功')
 
-                resolve()
-            })
-        },s)
-    })
-}
 
 
 
