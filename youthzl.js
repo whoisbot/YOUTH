@@ -40,4 +40,4 @@ return axios.get(url, {
        }
   i++;
 }, 2000);
-resolve()；
+resolve()
