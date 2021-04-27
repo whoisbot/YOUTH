@@ -39,7 +39,8 @@ return axios.get(url, {
 
        
   i++;
-      if(i === 60){    
+      if(i ===  10){    
         clearInterval(interval);
+        }
 }, 2000);
 
