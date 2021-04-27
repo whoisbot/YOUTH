@@ -116,7 +116,7 @@ if ($.isNode()) {
     readArr.push($.getdata('read_zq'));
     timeArr.push($.getdata('readtime_zq'));
 }
-let cookieYouth = $.getdata('youthheader_zq');
+
 const firstcheck = $.getdata('signt');
 const runtimes = $.getdata('times');
 const opboxtime = $.getdata('opbox');
@@ -779,7 +779,7 @@ function bonusTask() {
 }
 function TimePacket() {
     return new Promise((resolve, reject) => {
-        $.post(kdHost('WebApi/TimePacket/getReward', cookie), (error, resp, data) => {
+        $.post(kdHost('WebApi/TimePacket/getReward', signheaderVal), (error, resp, data) => {
             let timeres = JSON.parse(data);
             if (timeres.code == 1) {
                 $.log("获得" + timeres.data.score + "青豆");
