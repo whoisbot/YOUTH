@@ -38,11 +38,13 @@ const axios = require('axios');
   }
 
 
-const request = function(){
+const sleep = function (ms){
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
+const request = async function(){
   for(let i=0;i<10;i++){
-    setTimeout(function(){
-      aa()
-    },10000)
+    aa()
+    await sleep(1000)
   }
 }
-request();
+
