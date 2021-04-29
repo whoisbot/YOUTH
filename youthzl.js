@@ -48,7 +48,8 @@ const sleep = function (ms){
 const request = async function(){
   for(let i=0;i<50;i++){
     aa();
-    await sleep(500);
+    var num=Math.ceil(Math.random() * 25);
+    await sleep(num*200);
   }
 }
 request();
