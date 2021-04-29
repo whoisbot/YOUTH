@@ -34,6 +34,7 @@ var p= d.getTime();
     }).then((res) => { 
       //then 成功
       console.log(j);
+       console.log(p);
     }).catch((err) => {
       //catch 失败
       console.log("失败")
