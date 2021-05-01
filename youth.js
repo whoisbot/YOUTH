@@ -156,6 +156,8 @@ else if ($.time('HH')>4&&$.time('HH')<8){
   }
   await SevCont();
   await comApp();
+  await bonusTask();
+  await TaskCenter();
   await getArt();
   await openbox();
   await getAdVideo();
@@ -163,6 +165,7 @@ else if ($.time('HH')>4&&$.time('HH')<8){
   await readArticle();
   await Articlered();
    
+  await readTime();
   await readTime();
 
     
@@ -202,6 +205,94 @@ if (rotaryres.status !== 0&&rotaryres.data.doubleNum !== 0){
 })()
   .catch((e) => $.logErr(e))
   .finally(() => $.done())
+
+
+
+
+
+function TaskCenter() {
+    return new Promise((resolve, reject) => {
+        $.post(kdHost('WebApi/NewTaskIos/getTaskList?'), async(error, resp, data) => {
+            try {
+                taskres = JSON.parse(data);
+                //$.log(JSON.stringify(taskres,null,2));
+                if (taskres.status == 1) {
+                    await friendsign();
+                    for (dailys of taskres.list.daily) {
+                        button = dailys.but,
+                        title = dailys.title,
+                        dayid = dailys.id,
+                        reward_act = dailys.reward_action;
+                        await $.wait(500);
+                        $.log("去" + title);
+                        if (dailys.status == "2") {
+                            $.log(title + "，" + button + "，已领取青豆" + dailys.score);
+                            $.desc += `【${title}】✅  ${dailys.score}青豆\n`
+                        } else if (dailys.status == "1" && dailys.action != "") {
+                            $.log(dailys.title + "已完成 ，去领取奖励青豆");
+                            await $.wait(600);
+                            await getAction(reward_act)
+                        } else if (dailys.status == "0") {
+                            if (title == "打卡赚钱" && ONCard == "true") {
+                                await CardStatus()
+                            } else if (dayid == "7") {
+                                await readTime()
+                            } else if (title == "元宵额外赚") {
+                                await Census()
+                            } else if (dayid == "10") {
+                                $.log(title + "未完成，去做任务");
+                                for (x = 0; x < 5; x++) {
+                                    $.log("等待5s执行第" + (x + 1) + "次");
+                                    await $.wait(5000);
+                                    await recordAdVideo(reward_act)
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch (e) {
+                $.log("获取任务失败，" + e)
+            } finally {
+                resolve()
+            }
+        })
+    })
+}
+
+
+
+
+function bonusTask() {
+    return new Promise((resolve, reject) => {
+        $.post(kdHost('WebApi/ShareNew/bereadExtraList'), async(error, resp, data) => {
+            extrares = JSON.parse(data);
+            if (extrares.status == 2) {
+                $.log("参数错误" + JSON.stringify(extrares))
+            } else if (extrares.status == 1 && extrares.data.taskList[0].status == 1) {
+                timestatus = extrares.data.taskList[0].status;
+                timetitle = extrares.data.taskList[0].name;
+                $.log(timetitle + "可领取，去领青豆");
+                await TimePacket()
+            }
+            resolve()
+        })
+    })
+}
+
+function TimePacket() {
+    return new Promise((resolve, reject) => {
+        $.post(kdHost('WebApi/TimePacket/getReward', cookie), (error, resp, data) => {
+            let timeres = JSON.parse(data);
+            if (timeres.code == 1) {
+                $.log("获得" + timeres.data.score + "青豆");
+                $.desc += "【" + timetitle + "】获得" + timeres.data.score + "青豆\n"
+            } else if (timeres.code == 0) {
+                $.log(timeres.msg)
+            }
+            resolve()
+        })
+    })
+}
 
 function kdHost(api, body) {
     return {
