@@ -140,7 +140,8 @@ if (isGetCookie = typeof $request !== 'undefined') {
       $.index = i + 1;
       console.log(`-------------------------\n\n开始【中青看点${$.index}】`)
     }
-      myuid = signheaderVal.match(/uid=\d+/);
+    cookie=signheaderVal
+      myuid = cookie.match(/uid=\d+/);
   await sign();
   await signInfo();
   await friendsign();
