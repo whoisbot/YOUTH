@@ -140,7 +140,6 @@ if (isGetCookie = typeof $request !== 'undefined') {
       $.index = i + 1;
       console.log(`-------------------------\n\n开始【中青看点${$.index}】`)
     }
-      myuid = signheaderVal.match(/uid=\d+/);
   await sign();
   await signInfo();
   await friendsign();
@@ -155,6 +154,7 @@ else if ($.time('HH')>4&&$.time('HH')<8){
   }
   await SevCont();
   await comApp();
+  await ArticleShare();
   await openbox();
   await getAdVideo();
   await gameVideo();
@@ -384,52 +384,20 @@ function SevCont() {
 }
 
 
-function kdHost(api, body) {
-    return {
-        url: 'https://kd.youth.cn/' + api + `&${myuid}`,
-        headers: {
-            'Accept': '*/*',
-            'Accept-Encoding': 'gzip, deflate, br',
-            'Referer': 'https://kd.youth.cn/h5/20190301taskcenter/ios/index.html?' + cookie,
-            'Host': 'kd.youth.cn',
-            'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148',
-            'X-Requested-With': 'XMLHttpRequest'
-        },
-        body: body,
-        //timeout: 1000,
-    }
-}
-function getArt() {
-    return new Promise((resolve, reject) => {
-        $.post(kdHost('WebApi/ArticleTop/listsNewTag'), async(error, resp, data) => {
-            artres = JSON.parse(data);
-            if (artres.status == 1) {
-                for (arts of artres.data.items) {
-                    titlename = arts.title;
-                    account = arts.account_id;
-                    if (arts.status == "1") {
-                        $.log("去转发文章");
-                        $.log(titlename + " ----- " + arts.account_name);
-                        await artshare(arts.id);
-                        break;
-                        //await $.wait(500)
-                    }
-                }
-            }
-            resolve()
-        })
-    })
-}
 
-function artshare(artsid) {
+
+function ArticleShare() {
     return new Promise((resolve, reject) => {
-        $.post(kdHost('WebApi/ShareNew/getShareArticleReward', cookie + "&" + "article_id=" + artsid), async(error, resp, data) => {
-            shareres = JSON.parse(data);
-            if (shareres.status == 1) {
-                $.log("转发成功，共计转发" + shareres.data.items.share_num + "篇文章，获得青豆" + shareres.data.score)
+        setTimeout(() => {
+            const url = {
+                url: `https://focu.youth.cn/article/s?signature=0Z3Jgv96wqmVPeM7obRdNpHXgAmRhxNPJ6y4jpGDnANbo8KXQr&uid=46308484&phone_code=26170a068d9b9563e7028f197c8a4a2b&scid=33007686&time=1602937887&app_version=1.7.8&sign=d21dd80d0c6563f6f810dd76d7e0aef2`,
+                headers: JSON.parse(signheaderVal),
             }
-            resolve()
-        })
+            $.post(url, async(error, response, data) => {
+                //boxres = JSON.parse(data)
+                resolve()
+            })
+        },s)
     })
 }
 
@@ -449,7 +417,6 @@ function openbox() {
                   $.setdata(boxretime, 'opbox')
                     detail += `【开启宝箱】+${boxres.data.score}青豆 下次奖励${boxres.data.time / 60}分钟\n`
                       await boxshare();
-                      await getArt();
                 }else{
                     //detail += `【开启宝箱】${boxres.msg}\n`
                    // $.log(`${boxres.msg}`)
