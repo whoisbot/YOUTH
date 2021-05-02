@@ -252,12 +252,28 @@ function kdHost(api, body) {
 
 function huobaozf() {
     return new Promise((resolve, reject) => {
-        $.post(kdHost('WebApi/ShareNew/execExtractTask','action=beread_extra_reward_thre'), async(error, resp, data) => {
+      $.post(kdHost('WebApi/ShareNew/execExtractTask','action=beread_extra_reward_one'), async(error, resp, data) => {
+                  let box = JSON.parse(data);
+                  if (box.status == 1) {
+                      $.log('晨间分享领取成功')
+                  } else {
+                      $.log('晨间分享没到时间或已领取')
+                  }
+                  resolve()
+$.post(kdHost('WebApi/ShareNew/execExtractTask','action=beread_extra_reward_two'), async(error, resp, data) => {
+            let box = JSON.parse(data);
+            if (box.status == 1) {
+                $.log('午间分享领取成功')
+            } else {
+                $.log('午间分享没到时间或已领取')
+            }
+            resolve()
+        $.post(kdHost('WebApi/ShareNew/execExtractTask','action=beread_extra_reward_three'), async(error, resp, data) => {
             let box = JSON.parse(data);
             if (box.status == 1) {
                 $.log('晚间分享领取成功')
             } else {
-                $.log('没到时间或已领取')
+                $.log('晚间分享没到时间或已领取')
             }
             resolve()
         })
