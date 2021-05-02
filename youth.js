@@ -260,10 +260,7 @@ function huobaozf() {
                   } else {
                       $.log('晨间奖励没到时间或已领取')
                   }
-                  resolve()
-
-
-})
+                  
 await $.wait(600);
 $.post(kdHost('WebApi/ShareNew/execExtractTask','action=beread_extra_reward_two'), async(error, resp, data) => {
             let box = JSON.parse(data);
@@ -272,10 +269,6 @@ $.post(kdHost('WebApi/ShareNew/execExtractTask','action=beread_extra_reward_two'
             } else {
                 $.log('午间奖励没到时间或已领取')
             }
-            resolve()
-
-
-})
 await $.wait(600);
         $.post(kdHost('WebApi/ShareNew/execExtractTask','action=beread_extra_reward_three'), async(error, resp, data) => {
             let box = JSON.parse(data);
@@ -289,6 +282,15 @@ await $.wait(600);
 
 
     })
+            resolve()
+
+
+})
+resolve()
+
+})
+
+
 }
 
 
