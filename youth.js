@@ -214,12 +214,13 @@ function readshare(artsid) {
     return new Promise((resolve, reject) => {
     
      for (let i = 0; i < 50; i++) {
-     si=randomString();
-        $.get(readzl(si,artsid), async(error, resp, data) => {
+     
+        $.get(readzl(randomString(),artsid), async(error, resp, data) => {
            
             
             resolve()
         })
+        await $.wait(500);
         }
         $.log("助力成功");
     
