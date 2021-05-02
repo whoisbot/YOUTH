@@ -220,7 +220,7 @@ function readshare(artsid) {
             
             resolve()
         })
-        await $.wait(500);
+        
         }
         $.log("助力成功");
     
