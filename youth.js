@@ -255,6 +255,7 @@ function huobaozf() {
 
       $.post(kdHost('WebApi/ShareNew/execExtractTask','action=beread_extra_reward_one'), async(error, resp, data) => {
                   let box = JSON.parse(data);
+                  $.log(box)
                   if (box.status == 1) {
                       $.log('晨间奖励领取成功')
                   } else {
