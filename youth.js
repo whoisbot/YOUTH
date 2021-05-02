@@ -194,7 +194,7 @@ if (isGetCookie = typeof $request !== 'undefined') {
       }
       return pwd;
     }
-var timea=Date.parse(new Date())/1000;
+let timea=Date.parse(new Date())/1000;
 
 function readzl(si,id,body) {
     return {
