@@ -156,7 +156,7 @@ if (isGetCookie = typeof $request !== 'undefined') {
             await bonusTask();
             await TaskCenter();
             await openbox();
-            await huobaozf();
+            
             
             await getAdVideo();
             await gameVideo();
@@ -450,6 +450,7 @@ function getArt() {
                         $.log(titlename + " ----- " + arts.account_name);
                         await artshare(arts.id);
                         await readshare(arts.id);
+                        await huobaozf();
                         break;
                         //await $.wait(500)
                     }
