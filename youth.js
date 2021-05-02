@@ -213,15 +213,16 @@ function readzl(si,id,body) {
 function readshare(artsid) {
     return new Promise((resolve, reject) => {
     si=randomString();
-     for (let i = 0; i < 20; i++) {
+     for (let i = 0; i < 50; i++) {
         $.get(readzl(si,artsid), async(error, resp, data) => {
            
-                
+                $.log(si);
             
             resolve()
         })
         }
-        $.log("助力成功")
+        $.log("助力成功");
+        $.log(si);
     })
 }
 
