@@ -217,7 +217,6 @@ function readshare(artsid) {
      si=randomString();
         $.get(readzl(si,artsid), async(error, resp, data) => {
            
-                $.log(si);
             
             resolve()
         })
