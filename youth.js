@@ -154,7 +154,7 @@ if (isGetCookie = typeof $request !== 'undefined') {
             nick = nick ? nick : null;
             $.log(`\n ********** ${nick} 现金: ${cash}元 ********\n`);
             await bonusTask();
-            
+            await getArt();
             await TaskCenter();
             await openbox();
             await getAdVideo();
