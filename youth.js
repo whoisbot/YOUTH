@@ -272,7 +272,7 @@ function huobaozf() {
 
       $.post(jlHost('WebApi/ShareNew/execExtractTask','action=beread_extra_reward_one'), async(error, resp, data) => {
                   let box = JSON.parse(data);
-                  $.log(box)
+                  $.log(box.msg)
                   if (box.status == 1) {
                       $.log('晨间奖励领取成功')
                   } else {
