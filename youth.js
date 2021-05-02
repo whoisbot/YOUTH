@@ -264,7 +264,7 @@ function huobaozf() {
 
 
 })
-await $.wait(3000);
+setTimeout(1000)；
 $.post(kdHost('WebApi/ShareNew/execExtractTask','action=beread_extra_reward_two'), async(error, resp, data) => {
             let box = JSON.parse(data);
             if (box.status == 1) {
