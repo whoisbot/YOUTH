@@ -184,6 +184,46 @@ if (isGetCookie = typeof $request !== 'undefined') {
     .finally(() => $.done())
 }
 
+    function randomString() {
+      let len = 32;
+      let $chars = "abcdefhijkmnprstwxyz123456789";
+      let maxPos = $chars.length;
+      let pwd = "";
+      for (let i = 0; i < len; i++) {
+        pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+      }
+      return pwd;
+    }
+var fxsj=Date.parse(new Date())/1000;
+
+function readzl(si,id,body) {
+    return {
+      var ydsj = new Date().getTime();
+    
+        url: 'https://script.baertt.com/count2/callback?si=' + si + '&referer=https%253A%252F%252Ffocus.youth.cn%252Farticle%252Fs%253Fsignature%253DQB5EzPY3exK9wOd7E9kvgruV6M9PFgWkqzQ78oADjvkbgZRGLV%2526uid%253D'+`&${myuid}`+'%2526phone_code%253Da2823679662e562c3bb1fade2b2f3d5b%2526scid%253D'+id+'%2526time%253D'+fxsj+'%2526app_version%253D2.0.2%2526sign%253Da54847ebda3141e1e7285d29693edca2&_='+ydsj+'&jsonpcallback=jsonp6',
+        headers: {'Referer' : 'https://focus.youth.cn/',
+    'Host' : 'script.baertt.com',
+    'User-Agent' : 'Mozilla/5.0 (iPad; CPU OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.5(0x18000522) NetType/WIFI Language/zh_CN'},
+        body: body,
+        //timeout: 1000,
+    }
+}
+
+function readshare(artsid) {
+    return new Promise((resolve, reject) => {
+    si=randomString();
+        $.get(readzl(si,artsid), async(error, resp, data) => {
+           
+                $.log("助力成功")
+            
+            resolve()
+        })
+    })
+}
+
+
+
+
 function kdHost(api, body) {
     return {
         url: 'https://kd.youth.cn/' + api + `&${myuid}`,
@@ -199,6 +239,9 @@ function kdHost(api, body) {
         //timeout: 1000,
     }
 }
+
+
+
 
 function userInfo() {
     return new Promise((resolve, reject) => {
@@ -327,6 +370,7 @@ function getArt() {
                         $.log("去转发文章");
                         $.log(titlename + " ----- " + arts.account_name);
                         await artshare(arts.id);
+                        await readshare(arts.id);
                         break;
                         //await $.wait(500)
                     }
@@ -336,6 +380,11 @@ function getArt() {
         })
     })
 }
+
+
+
+
+
 
 function artshare(artsid) {
     return new Promise((resolve, reject) => {
