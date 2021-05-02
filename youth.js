@@ -156,6 +156,7 @@ if (isGetCookie = typeof $request !== 'undefined') {
             await bonusTask();
             await TaskCenter();
             await openbox();
+            await huobaozf();
             await getAdVideo();
             await gameVideo();
             await readArticle();
@@ -243,6 +244,23 @@ function kdHost(api, body) {
         body: body,
         //timeout: 1000,
     }
+}
+
+
+
+
+function huobaozf() {
+    return new Promise((resolve, reject) => {
+        $.post(kdHost('WebApi/ShareNew/execExtractTask','action=beread_extra_reward_thre'), async(error, resp, data) => {
+            let box = JSON.parse(data);
+            if (box.status == 1) {
+                $.log('晚间分享领取成功')
+            } else {
+                $.log('没到时间或已领取')
+            }
+            resolve()
+        })
+    })
 }
 
 
