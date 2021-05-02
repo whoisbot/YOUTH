@@ -249,11 +249,28 @@ function kdHost(api, body) {
 
 
 
+function jlHost(api, body) {
+    return {
+        url: 'https://kd.youth.cn/' + api,
+        headers: {
+            'Accept': '*/*',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Referer': 'https://kd.youth.cn/h5/20190301taskcenter/ios/index.html?' + cookie,
+            'Host': 'kd.youth.cn',
+            'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148',
+            'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: body,
+        //timeout: 1000,
+    }
+}
+
+
 
 function huobaozf() {
     return new Promise((resolve, reject) => {
 
-      $.post(kdHost('WebApi/ShareNew/execExtractTask','action=beread_extra_reward_one'), async(error, resp, data) => {
+      $.post(jlHost('WebApi/ShareNew/execExtractTask','action=beread_extra_reward_one'), async(error, resp, data) => {
                   let box = JSON.parse(data);
                   $.log(box)
                   if (box.status == 1) {
@@ -263,7 +280,7 @@ function huobaozf() {
                   }
                   
 
-$.post(kdHost('WebApi/ShareNew/execExtractTask','action=beread_extra_reward_two'), async(error, resp, data) => {
+$.post(jlHost('WebApi/ShareNew/execExtractTask','action=beread_extra_reward_two'), async(error, resp, data) => {
             let box = JSON.parse(data);
             if (box.status == 1) {
                 $.log('午间奖励领取成功')
@@ -271,14 +288,14 @@ $.post(kdHost('WebApi/ShareNew/execExtractTask','action=beread_extra_reward_two'
                 $.log('午间奖励没到时间或已领取')
             }
 
-        $.post(kdHost('WebApi/ShareNew/execExtractTask','action=beread_extra_reward_three'), async(error, resp, data) => {
+        $.post(jlHost('WebApi/ShareNew/execExtractTask','action=beread_extra_reward_three'), async(error, resp, data) => {
             let box = JSON.parse(data);
             if (box.status == 1) {
                 $.log('晚间奖励领取成功')
             } else {
                 $.log('晚间奖励没到时间或已领取')
             }
-$.post(kdHost('WebApi/ShareNew/execExtractTask','beread_extra_reward_plus_wub'), async(error, resp, data) => {
+$.post(jlHost('WebApi/ShareNew/execExtractTask','action=beread_extra_reward_plus_wub'), async(error, resp, data) => {
             let box = JSON.parse(data);
             if (box.status == 1) {
                 $.log('已有十人助力')
