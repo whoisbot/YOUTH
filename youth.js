@@ -212,8 +212,9 @@ function readzl(si,id,body) {
 
 function readshare(artsid) {
     return new Promise((resolve, reject) => {
-    si=randomString();
+    
      for (let i = 0; i < 50; i++) {
+     si=randomString();
         $.get(readzl(si,artsid), async(error, resp, data) => {
            
                 $.log(si);
