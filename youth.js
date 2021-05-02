@@ -223,7 +223,7 @@ function readshare(artsid) {
         })
         }
         $.log("助力成功");
-        $.log(si);
+    
     })
 }
 
