@@ -448,10 +448,12 @@ function getArt() {
                     if (arts.status == "1") {
                     jj=arts.share_url;
                     hh=jj.match(/signature=\w+/);
+                    ww=hh.match(.{10,50}$);
                         $.log("去转发文章");
+                        
                         $.log(titlename + " ----- " + arts.account_name);
                         await artshare(arts.id);
-                        await readshare(arts.id,hh);
+                        await readshare(arts.id,ww);
                         await artsharescore(arts.id);
                         await huobaozf();
                         break;
@@ -484,7 +486,7 @@ function artshare(artsid) {
         $.post(kdHost('WebApi/ShareNew/getShareArticleReward', cookie + "&" + "article_id=" + artsid), async(error, resp, data) => {
             shareres = JSON.parse(data);
             if (shareres.status == 1) {
-                $.log("转发成功，共计转发" + shareres.data.items.share_num + "篇文章，获得青豆" + shareres.data.score)
+                $.log("转发成功，共计转发" + shareres.data.items.share_num + "篇文章")
             }
             resolve()
         })
