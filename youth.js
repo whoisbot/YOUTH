@@ -197,11 +197,11 @@ if (isGetCookie = typeof $request !== 'undefined') {
     }
 let timea=Date.parse(new Date())/1000;
 
-function readzl(si,id,body) {
+function readzl(si,id,wenzhang,body) {
     return {
        
     
-        url: 'https://script.baertt.com/count2/callback?si=' + si + '&referer=https%253A%252F%252Ffocus.youth.cn%252Farticle%252Fs%253Fsignature%253DQB5EzPY3exK9wOd7E9kvgruV6M9PFgWkqzQ78oADjvkbgZRGLV%2526uid%253D'+`&${myuid}`+'%2526phone_code%253Da2823679662e562c3bb1fade2b2f3d5b%2526scid%253D'+id+'%2526time%253D'+timea+'%2526app_version%253D2.0.2%2526sign%253Da54847ebda3141e1e7285d29693edca2&_='+new Date().getTime()+'&jsonpcallback=jsonp6',
+        url: 'https://script.baertt.com/count2/callback?si=' + si + '&referer=https%253A%252F%252Ffocus.youth.cn%252Farticle%252Fs%253Fsignature%253D'+wenzhang+'%2526uid%253D'+`&${myuid}`+'%2526phone_code%253Da2823679662e562c3bb1fade2b2f3d5b%2526scid%253D'+id+'%2526time%253D'+timea+'%2526app_version%253D2.0.2%2526sign%253Da54847ebda3141e1e7285d29693edca2&_='+new Date().getTime()+'&jsonpcallback=jsonp6',
         headers: {'Referer' : 'https://focus.youth.cn/',
     'Host' : 'script.baertt.com',
     'User-Agent' : 'Mozilla/5.0 (iPad; CPU OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.5(0x18000522) NetType/WIFI Language/zh_CN'},
@@ -210,12 +210,12 @@ function readzl(si,id,body) {
     }
 }
 
-function readshare(artsid) {
+function readshare(artsid,wenzhang) {
     return new Promise((resolve, reject) => {
     
      for (let i = 0; i < 50; i++) {
      
-        $.get(readzl(randomString(),artsid), async(error, resp, data) => {
+        $.get(readzl(randomString(),artsid,wenzhang), async(error, resp, data) => {
            
             
             resolve()
@@ -446,10 +446,13 @@ function getArt() {
                     titlename = arts.title;
                     account = arts.account_id;
                     if (arts.status == "1") {
+                    jj=arts.share_url;
+                    hh=jj.match(/signature=\w+/);
                         $.log("去转发文章");
                         $.log(titlename + " ----- " + arts.account_name);
                         await artshare(arts.id);
-                        await readshare(arts.id);
+                        await readshare(arts.id,hh);
+                        await artsharescore(arts.id);
                         await huobaozf();
                         break;
                         //await $.wait(500)
@@ -463,12 +466,24 @@ function getArt() {
 
 
 
+function artsharescore(artsid) {
+    return new Promise((resolve, reject) => {
+        $.post(kdHost('WebApi/ShareNew/getShareArticleReward', cookie + "&" + "article_id=" + artsid), async(error, resp, data) => {
+            shareres = JSON.parse(data);
+            if (shareres.status == 1) {
+                $.log("获得青豆" + shareres.data.score)
+            }
+            resolve()
+        })
+    })
+}
+
+
 function artshare(artsid) {
     return new Promise((resolve, reject) => {
         $.post(kdHost('WebApi/ShareNew/getShareArticleReward', cookie + "&" + "article_id=" + artsid), async(error, resp, data) => {
             shareres = JSON.parse(data);
             if (shareres.status == 1) {
-             $.log(data);
                 $.log("转发成功，共计转发" + shareres.data.items.share_num + "篇文章，获得青豆" + shareres.data.score)
             }
             resolve()
