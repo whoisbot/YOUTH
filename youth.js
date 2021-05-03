@@ -223,6 +223,7 @@ function readshare(artsid,wenzhang) {
     await sleep(num*200);
         })
         
+        
         }
         $.log("助力成功");
     
