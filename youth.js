@@ -447,7 +447,6 @@ function getArt() {
                     account = arts.account_id;
                     if (arts.status == "1") {
                         $.log("去转发文章");
-                        $.log(data);
                         $.log(titlename + " ----- " + arts.account_name);
                         await artshare(arts.id);
                         await readshare(arts.id);
