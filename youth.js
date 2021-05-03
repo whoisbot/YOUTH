@@ -156,7 +156,6 @@ if (isGetCookie = typeof $request !== 'undefined') {
             await bonusTask();
             await TaskCenter();
             await openbox();
-            await getArt();
             await getAdVideo();
             await gameVideo();
             await readArticle();
