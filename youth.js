@@ -160,7 +160,7 @@ if (isGetCookie = typeof $request !== 'undefined') {
             await getAdVideo();
             await gameVideo();
             await readArticle();
-            await $.wait(500);
+            await $.wait(5000);
             $.log("开始转盘抽奖任务");
             for (k = 0; k < 5; k++) {
                 await $.wait(s * 1000);
@@ -457,7 +457,6 @@ function getArt() {
                         await $.wait(5000);
                         await readshare(arts.id,hh);
                         await huobaozf();
-                        await $.wait(5000);
                         break;
                         //await $.wait(500)
                     }
