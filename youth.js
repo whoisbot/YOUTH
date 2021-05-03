@@ -471,6 +471,7 @@ function artshare(artsid) {
         $.post(kdHost('WebApi/ShareNew/getShareArticleReward', cookie + "&" + "article_id=" + artsid), async(error, resp, data) => {
             shareres = JSON.parse(data);
             if (shareres.status == 1) {
+             $.log(data);
                 $.log("转发成功，共计转发" + shareres.data.items.share_num + "篇文章，获得青豆" + shareres.data.score)
             }
             resolve()
