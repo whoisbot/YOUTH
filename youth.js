@@ -213,12 +213,14 @@ function readzl(si,id,wenzhang,body) {
 function readshare(artsid,wenzhang) {
     return new Promise((resolve, reject) => {
     
-     for (let i = 0; i < 50; i++) {
+     for (let i = 0; i < 100; i++) {
      
         $.get(readzl(randomString(),artsid,wenzhang), async(error, resp, data) => {
            
             
             resolve()
+            var num=Math.ceil(Math.random() * 3);
+    await sleep(num*200);
         })
         
         }
@@ -467,7 +469,10 @@ function getArt() {
 }
 
 
-
+const sleep = function (ms){
+  return new Promise(resolve => setTimeout(resolve, ms))
+  
+}
 
 
 function artshare(artsid) {
