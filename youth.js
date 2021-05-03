@@ -454,6 +454,7 @@ function getArt() {
                         $.log(titlename + " ----- " + arts.account_name);
                         await artshare(arts.id);
                         await readshare(arts.id,hh);
+                        await artshare(arts.id);
                         await huobaozf();
                         break;
                         //await $.wait(500)
