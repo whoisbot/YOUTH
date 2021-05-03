@@ -156,9 +156,11 @@ if (isGetCookie = typeof $request !== 'undefined') {
             await bonusTask();
             await TaskCenter();
             await openbox();
+            await getArt();
             await getAdVideo();
             await gameVideo();
             await readArticle();
+            await $.wait(500);
             $.log("开始转盘抽奖任务");
             for (k = 0; k < 5; k++) {
                 await $.wait(s * 1000);
