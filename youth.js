@@ -213,7 +213,7 @@ function readzl(si,id,wenzhang,body) {
 function readshare(artsid,wenzhang) {
     return new Promise((resolve, reject) => {
     
-     for (let i = 0; i < 100; i++) {
+     for (let i = 0; i < 20; i++) {
      
         $.get(readzl(randomString(),artsid,wenzhang), async(error, resp, data) => {
            
