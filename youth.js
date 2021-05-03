@@ -156,7 +156,6 @@ if (isGetCookie = typeof $request !== 'undefined') {
             await bonusTask();
             await TaskCenter();
             await openbox();
-            await getArt();
             await getAdVideo();
             await gameVideo();
             await readArticle();
@@ -254,7 +253,7 @@ function jlHost(api, body) {
         headers: {
             'Accept': '*/*',
             'Accept-Encoding': 'gzip, deflate, br',
-            'Referer': 'https://kd.youth.cn/h5/20190301taskcenter/ios/index.html?' + cookie,
+            'Referer': 'https://kd.youth.cn/h5/20200612makeMoney/shareRecords?' + cookie,
             'Host': 'kd.youth.cn',
             'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148',
             'X-Requested-With': 'XMLHttpRequest'
@@ -264,6 +263,22 @@ function jlHost(api, body) {
     }
 }
 
+
+function scoreHost(api, body) {
+    return {
+        url: 'https://kd.youth.cn/' + api,
+        headers: {
+            'Accept': '*/*',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Referer': 'https://kd.youth.cn/h5/20190301taskcenter/ios/index.html?' + cookie,
+            'Host': 'kd.youth.cn',
+            'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148',
+            'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: body,
+        //timeout: 1000,
+    }
+}
 
 
 function huobaozf() {
@@ -455,6 +470,7 @@ function getArt() {
                         await $.wait(5000);
                         await readshare(arts.id,hh);
                         await huobaozf();
+                        await $.wait(5000);
                         break;
                         //await $.wait(500)
                     }
