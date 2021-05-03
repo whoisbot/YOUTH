@@ -448,7 +448,7 @@ function getArt() {
                     if (arts.status == "1") {
                     jj=arts.share_url;
                     hh=jj.match(/signature=\w+/);
-                    ww=hh.match(.{10,50}$);
+                    ww=hh.match(/.{10,50}$/);
                         $.log("去转发文章");
                         
                         $.log(titlename + " ----- " + arts.account_name);
