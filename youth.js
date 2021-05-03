@@ -447,13 +447,13 @@ function getArt() {
                     account = arts.account_id;
                     if (arts.status == "1") {
                     jj=arts.share_url;
-                    hh=jj.match(/signature=\w+/);
-                    ww=hh.match(/.{10,50}$/);
+                    hh=jj.match(/.{10,50}$/);
+                    
                         $.log("去转发文章");
                         
                         $.log(titlename + " ----- " + arts.account_name);
                         await artshare(arts.id);
-                        await readshare(arts.id,ww);
+                        await readshare(arts.id,hh);
                         await artsharescore(arts.id);
                         await huobaozf();
                         break;
