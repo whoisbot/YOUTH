@@ -37,6 +37,7 @@ Surge 4.0 :
 中青看点 = type=http-request,pattern=https:\/\/ios\.baertt\.com\/v5\/user\/app_stay\.json,script-pathhttps://raw.githubusercontent.com/akuticlouds/actions-youth/main/youth.js, requires-body=true
 
 
+
 Loon 2.1.0+
 [Script]
 # 本地脚本
