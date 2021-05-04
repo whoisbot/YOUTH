@@ -774,6 +774,7 @@ function readArticle() {
 function readTime() {
     return new Promise((resolve, reject) => {
         $.post(batHost('user/stay.json', timebody), (error, resp, data) => {
+          $.post(batHost('user/stay.json', timebody), (error, resp, data) => {
             let timeres = JSON.parse(data);
             if (timeres.error_code == 0) {
                 readtimes = timeres.time / 60;
@@ -787,8 +788,11 @@ function readTime() {
             }
             resolve()
         })
+resolve()
+        })
     })
 }
+
 
 function bonusTask() {
     return new Promise((resolve, reject) => {
