@@ -59,7 +59,7 @@ const notify = $.isNode() ? require('./sendNotify') : '';
 
 // 可设置部分
 let notifyInterval = $.getdata("notifytimes") || 50; //通知间隔，默认抽奖每50次通知一次，如需关闭全部通知请设为0
-let ONCard = $.getdata('zqcard') || "false"; //早起打卡开关
+let ONCard = $.getdata('zqcard') || "true"; //早起打卡开关
 let s = $.getdata('delay_rotary_zq') || "10"; //转盘延迟时间
 let withdrawcash = $.getdata('zqcash') || 30; //提现金额
 let cardTime = $.getdata('zqtime') || "05"; //打卡时间
@@ -156,6 +156,7 @@ if (isGetCookie = typeof $request !== 'undefined') {
             await bonusTask();
             await TaskCenter();
             await openbox();
+            await getArt();
             await getAdVideo();
             await gameVideo();
             await readArticle();
