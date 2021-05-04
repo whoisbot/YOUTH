@@ -201,13 +201,81 @@ function readzl(si,id,wenzhang,sign,body) {
     }
 }
 
+function readzlvisit(si,id,wenzhang,sign,body) {
+    return {
+       
+    
+        url: 'https://script.baertt.com/count2/visit?type=1&si=' + si + '&referer=https%253A%252F%252Ffocus.youth.cn%252Farticle%252Fs%253Fsignature%253D'+wenzhang+'%2526uid%253D'+`&${myuid}`+'%2526phone_code%253Da2823679662e562c3bb1fade2b2f3d5b%2526scid%253D'+id+'%2526time%253D'+timea+'%2526app_version%253D2.0.2%2526sign%253D'+sign+'&_='+new Date().getTime()+'&jsonpcallback=jsonp3',
+        headers: {'Referer' : 'https://focus.youth.cn/',
+    'Host' : 'script.baertt.com',
+    'User-Agent' : 'Mozilla/5.0 (iPad; CPU OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.5(0x18000522) NetType/WIFI Language/zh_CN'},
+        body: body,
+        //timeout: 1000,
+    }
+}
+
+
+
+function readzlstorage(si,id,wenzhang,sign,body) {
+    return {
+       
+    
+        url: 'https://script.baertt.com/count2/storage?t=' + si + '&referer=https%253A%252F%252Ffocus.youth.cn%252Farticle%252Fs%253Fsignature%253D'+wenzhang+'%2526uid%253D'+`&${myuid}`+'%2526phone_code%253Da2823679662e562c3bb1fade2b2f3d5b%2526scid%253D'+id+'%2526time%253D'+timea+'%2526app_version%253D2.0.2%2526sign%253D'+sign+'&_='+new Date().getTime()+'&jsonpcallback=jsonp3',
+        headers: {'Referer' : 'https://focus.youth.cn/',
+    'Host' : 'script.baertt.com',
+    'User-Agent' : 'Mozilla/5.0 (iPad; CPU OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.5(0x18000522) NetType/WIFI Language/zh_CN'},
+        body: body,
+        //timeout: 1000,
+    }
+}
+
+
+function readzlopen(id,wenzhang,sign,body) {
+    return {
+       
+    
+        url: 'https://script.baertt.com/count2/openpage?referer=https%253A%252F%252Ffocus.youth.cn%252Farticle%252Fs%253Fsignature%253D'+wenzhang+'%2526uid%253D'+`&${myuid}`+'%2526phone_code%253Da2823679662e562c3bb1fade2b2f3d5b%2526scid%253D'+id+'%2526time%253D'+timea+'%2526app_version%253D2.0.2%2526sign%253D'+sign+'&_='+new Date().getTime()+'&jsonpcallback=jsonp5',
+        headers: {'Referer' : 'https://focus.youth.cn/',
+    'Host' : 'script.baertt.com',
+    'User-Agent' : 'Mozilla/5.0 (iPad; CPU OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.5(0x18000522) NetType/WIFI Language/zh_CN'},
+        body: body,
+        //timeout: 1000,
+    }
+}
+
 function readshare(artsid,wenzhang) {
     return new Promise((resolve, reject) => {
     var suiji=Math.ceil(Math.random() * 10);
     
      for (let i = 0; i <suiji*6 ; i++) {
-     
-        $.get(readzl(randomString(),artsid,wenzhang,randomString()), async(error, resp, data) => {
+     var yy=randomString();
+      var zz=randomString();
+      
+   $.get(readzlstorage(yy,artsid,wenzhang,zz), async(error, resp, data) => {
+           
+            
+            resolve()
+            var num=Math.ceil(Math.random() * 3);
+    await sleep(num*300);
+        })   
+      
+     $.get(readzlvisit(yy,artsid,wenzhang,zz), async(error, resp, data) => {
+           
+            
+            resolve()
+            var num=Math.ceil(Math.random() * 3);
+    await sleep(num*300);
+        })
+        
+             $.get(readzlopen(artsid,wenzhang,zz), async(error, resp, data) => {
+           
+            
+            resolve()
+            var num=Math.ceil(Math.random() * 3);
+    await sleep(num*300);
+        })
+        
+        $.get(readzl(yy,artsid,wenzhang,zz), async(error, resp, data) => {
            
             
             resolve()
