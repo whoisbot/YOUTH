@@ -210,10 +210,10 @@ function readshare(artsid,wenzhang) {
            
             
             resolve()
-            
-        })
-        var num=Math.ceil(Math.random() * 3);
+            var num=Math.ceil(Math.random() * 3);
     await sleep(num*300);
+        })
+        
         
         }
         $.log("助力成功");
