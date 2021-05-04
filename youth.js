@@ -146,7 +146,7 @@ if (isGetCookie = typeof $request !== 'undefined') {
             await bonusTask();
             await TaskCenter();
             await openbox();
-            await getArt();
+            //await getArt();
             await getAdVideo();
             await gameVideo();
             await readArticle();
@@ -512,7 +512,7 @@ function getArt() {
                     jj=arts.share_url;
                     hh=jj.match(/.{10,50}$/);
                         $.log("去转发文章");
-                        $.log(hh);
+                        //$.log(hh);
                         $.log(titlename + " ----- " + arts.account_name);
                         await artshare(arts.id);
                         await $.wait(5000);
