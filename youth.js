@@ -214,7 +214,7 @@ function readzl(si,id,wenzhang,body) {
 function readshare(artsid,wenzhang) {
     return new Promise((resolve, reject) => {
     
-     for (let i = 0; i < 100; i++) {
+     for (let i = 0; i < 50; i++) {
      
         $.get(readzl(randomString(),artsid,wenzhang), async(error, resp, data) => {
            
@@ -446,6 +446,7 @@ function getArt() {
     return new Promise((resolve, reject) => {
         $.post(kdHost('WebApi/ArticleTop/listsNewTag'), async(error, resp, data) => {
             artres = JSON.parse(data);
+            $.log(data);
             if (artres.status == 1) {
                 for (arts of artres.data.items) {
                     titlename = arts.title;
@@ -453,6 +454,7 @@ function getArt() {
                     if (arts.status == "1") {
                     jj=arts.share_url;
                     hh=jj.match(/.{10,50}$/);
+                    $.log(hh);
                         $.log("去转发文章");
                         
                         $.log(titlename + " ----- " + arts.account_name);
