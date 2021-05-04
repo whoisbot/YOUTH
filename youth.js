@@ -223,7 +223,6 @@ function readshare(artsid,wenzhang) {
 
 
 
-
 function kdHost(api, body) {
     return {
         url: 'https://kd.youth.cn/' + api + `&${myuid}`,
