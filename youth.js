@@ -146,7 +146,7 @@ if (isGetCookie = typeof $request !== 'undefined') {
             await bonusTask();
             await TaskCenter();
             await openbox();
-            await getArt();
+            //await getArt();
             await getAdVideo();
             await gameVideo();
             await readArticle();
@@ -220,7 +220,7 @@ function readzlstorage(si,id,wenzhang,sign,body) {
     return {
        
     
-        url: 'https://script.baertt.com/count2/storage?t=' + si + '&referer=https%253A%252F%252Ffocus.youth.cn%252Farticle%252Fs%253Fsignature%253D'+wenzhang+'%2526uid%253D'+`&${myuid}`+'%2526phone_code%253Da2823679662e562c3bb1fade2b2f3d5b%2526scid%253D'+id+'%2526time%253D'+timea+'%2526app_version%253D2.0.2%2526sign%253D'+sign+'&_='+new Date().getTime()+'&jsonpcallback=jsonp3',
+        url: 'https://script.baertt.com/count2/storage?t=' + si + '&referer=https%253A%252F%252Ffocus.youth.cn%252Farticle%252Fs%253Fsignature%253D'+wenzhang+'%2526uid%253D'+`&${myuid}`+'%2526phone_code%253Da2823679662e562c3bb1fade2b2f3d5b%2526scid%253D'+id+'%2526time%253D'+timea+'%2526app_version%253D2.0.2%2526sign%253D'+sign+'&_='+new Date().getTime()+'&jsonpcallback=jsonp2',
         headers: {'Referer' : 'https://focus.youth.cn/',
     'Host' : 'script.baertt.com',
     'User-Agent' : 'Mozilla/5.0 (iPad; CPU OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.5(0x18000522) NetType/WIFI Language/zh_CN'},
