@@ -204,16 +204,16 @@ function readshare(artsid,wenzhang) {
     return new Promise((resolve, reject) => {
     var suiji=Math.ceil(Math.random() * 10);
     
-     for (let i = 0; i <suiji*10 ; i++) {
+     for (let i = 0; i <suiji*6 ; i++) {
      
         $.get(readzl(randomString(),artsid,wenzhang,randomString()), async(error, resp, data) => {
            
             
             resolve()
-            var num=Math.ceil(Math.random() * 3);
-    await sleep(num*200);
+            
         })
-        
+        var num=Math.ceil(Math.random() * 3);
+    await sleep(num*300);
         
         }
         $.log("助力成功");
