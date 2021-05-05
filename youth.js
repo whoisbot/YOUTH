@@ -49,7 +49,7 @@ const notify = $.isNode() ? require('./sendNotify') : '';
 
 // 可设置部分
 let notifyInterval = $.getdata("notifytimes") || 50; //通知间隔，默认抽奖每50次通知一次，如需关闭全部通知请设为0
-let ONCard = $.getdata('zqcard') || "false"; //早起打卡开关
+let ONCard = $.getdata('zqcard') || "true"; //早起打卡开关
 let s = $.getdata('delay_rotary_zq') || "10"; //转盘延迟时间
 let withdrawcash = $.getdata('zqcash') || 30; //提现金额
 let cardTime = $.getdata('zqtime') || "05"; //打卡时间
@@ -135,7 +135,6 @@ if (isGetCookie = typeof $request !== 'undefined') {
         for (let i = 0; i < cookieArr.length; i++) {
             if (cookieArr[i]) {
                 cookie = cookieArr[i],
-                  
                 articbody = readArr[i],
                 timebody = timeArr[i],
                 $.index = i + 1
@@ -144,15 +143,6 @@ if (isGetCookie = typeof $request !== 'undefined') {
             await userInfo();
             nick = nick ? nick : null;
             $.log(`\n ********** ${nick} 现金: ${cash}元 ********\n`);
-            if($.time('HH')>12){
-  await punchCard()
-};
-if ($.isNode()&& $.time('HH')>20&&$.time('HH')<22){
-  await endCard();
-  }
-else if ($.time('HH')>4&&$.time('HH')<8){
-  await endCard();
-  }
             await bonusTask();
             await TaskCenter();
             await openbox();
@@ -586,7 +576,7 @@ function CardStatus() {
         $.get(kdHost('WebApi/PunchCard/getMainData?&' + cookie), async(error, resp, data) => {
             punchcard = JSON.parse(data);
             if (punchcard.code == 1) {
-                if (punchcard.data.user.status == 0 && $.time("HH") > "12") {
+                if (punchcard.data.user.status == 0 && $.time("HH") > "22") {
                     await punchCard()
                 } else if (punchcard.data.user.status == 2) {
                     $.log("每日打卡已报名，请每天早晨" + cardTime + "点运行打卡");
@@ -664,9 +654,6 @@ function Cardshare() {
         })
     })
 }
-
-
-
 
 
 function SevCont() {
