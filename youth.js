@@ -143,6 +143,15 @@ if (isGetCookie = typeof $request !== 'undefined') {
             await userInfo();
             nick = nick ? nick : null;
             $.log(`\n ********** ${nick} 现金: ${cash}元 ********\n`);
+            if($.time('HH')>12){
+  await punchCard()
+};
+if ($.isNode()&& $.time('HH')>20&&$.time('HH')<22){
+  await endCard();
+  }
+else if ($.time('HH')>4&&$.time('HH')<8){
+  await endCard();
+  }
             await bonusTask();
             await TaskCenter();
             await openbox();
@@ -571,7 +580,7 @@ function withDraw() {
     })
 }
 
-function CardStatus() {
+/*function CardStatus() {
     return new Promise((resolve, reject) => {
         $.get(kdHost('WebApi/PunchCard/getMainData?&' + cookie), async(error, resp, data) => {
             punchcard = JSON.parse(data);
@@ -593,7 +602,7 @@ function CardStatus() {
             resolve();
         })
     })
-}
+}*/
 
 function punchCard() {
     return new Promise((resolve, reject) => {
