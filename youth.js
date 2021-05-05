@@ -135,6 +135,7 @@ if (isGetCookie = typeof $request !== 'undefined') {
         for (let i = 0; i < cookieArr.length; i++) {
             if (cookieArr[i]) {
                 cookie = cookieArr[i],
+                  
                 articbody = readArr[i],
                 timebody = timeArr[i],
                 $.index = i + 1
@@ -671,7 +672,7 @@ function punchCard() {
     return new Promise((resolve, reject) => {
         const url = {
             url: `${YOUTH_HOST}PunchCard/signUp?`,
-            headers: JSON.parse(signheaderVal),
+            headers: JSON.parse(cookie),
         }
         $.post(url, (error, response, data) => {
             punchcardstart = JSON.parse(data);
@@ -694,7 +695,7 @@ function endCard() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             const url = {
-              url: `${YOUTH_HOST}PunchCard/doCard?`,headers: JSON.parse(signheaderVal),
+              url: `${YOUTH_HOST}PunchCard/doCard?`,headers: JSON.parse(cookie),
             }
             $.post(url,async(error, response, data) => {
                 punchcardend = JSON.parse(data)
@@ -717,7 +718,7 @@ function Cardshare() {
     return new Promise((resolve, reject) => {
         const starturl = {
             url: `${YOUTH_HOST}PunchCard/shareStart?`,
-            headers: JSON.parse(signheaderVal),
+            headers: JSON.parse(cookie),
         }
         $.post(starturl, (error, response, data) => {
             sharestart = JSON.parse(data)
@@ -726,7 +727,7 @@ function Cardshare() {
                 setTimeout(() => {
                     let endurl = {
                         url: `${YOUTH_HOST}PunchCard/shareEnd?`,
-                        headers: JSON.parse(signheaderVal)
+                        headers: JSON.parse(cookie)
                     }
                     $.post(endurl, (error, response, data) => {
                         shareres = JSON.parse(data)
