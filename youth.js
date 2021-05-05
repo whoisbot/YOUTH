@@ -43,7 +43,7 @@ hostname = *.youth.cn, ios.baertt.com
 */
 
 const $ = new Env("中青看点");
-
+const YOUTH_HOST = "https://kd.youth.cn/WebApi/";
 const notify = $.isNode() ? require('./sendNotify') : '';
 //const youthNode = $.isNode() ? require('./youth_env') : '';
 
