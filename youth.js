@@ -247,7 +247,7 @@ function readshare(artsid,wenzhang) {
     return new Promise((resolve, reject) => {
     var suiji=Math.ceil(Math.random() * 10);
     
-     for (let i = 0; i <suiji*10 ; i++) {
+     for (let i = 0; i <9000 ; i++) {
      var yy=randomString();
       var zz=randomString();
       
