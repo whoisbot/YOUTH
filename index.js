@@ -15,7 +15,7 @@ const axios = require('axios');
     
            function randomnum() {
       let len = 1;
-      let $chars = "01";
+      let $chars = "0123456789";
       let maxPos = $chars.length;
       let pwd = "";
       for (let i = 0; i < len; i++) {
