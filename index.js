@@ -46,7 +46,8 @@ method: 'post',
     }).then((res) => { 
       //then 成功
  const data = res.data;
- console.log(data);
+ console.log(data.articleInReadAccount.profit);
+      console.log(data.articleInReadAccount.total_profit_num);
     }).catch((err) => {
       //catch 失败
       console.log(err)
