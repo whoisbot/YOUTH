@@ -62,10 +62,10 @@ const sleep = function (ms){
   
 }
 const request = async function(){
-  for(let i=0;i<70;i++){
+  for(let i=0;i<2;i++){
     aa();
   
-    await sleep(35000);
+    await sleep(3000);
   }
 }
 
