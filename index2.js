@@ -45,7 +45,7 @@ method: 'post',
     }).then((res) => { 
       //then 成功
  const data = res.data;
- console.log(data);
+console.log("奖励"+data.profit);
     }).catch((err) => {
       //catch 失败
       console.log(err)
@@ -57,19 +57,19 @@ method: 'post',
 
 
 
-const sleep = function (ms){
+/*const sleep = function (ms){
   return new Promise(resolve => setTimeout(resolve, ms))
   
 }
 const request = async function(){
-  for(let i=0;i<2;i++){
+  for(let i=0;i<2;i++){*/
     aa();
   
-    await sleep(3000);
+    /*await sleep(3000);
   }
 }
 
 
 
 
-request();
+request();*/
