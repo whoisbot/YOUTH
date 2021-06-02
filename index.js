@@ -46,8 +46,8 @@ method: 'post',
     }).then((res) => { 
       //then 成功
  const data = res.data;
- console.log(data.articleInReadAccount.profit);
-      console.log(data.articleInReadAccount.total_profit_num);
+ console.log("奖励="data.articleInReadAccount.profit   "奖励次数="data.articleInReadAccount.total_profit_num);
+
     }).catch((err) => {
       //catch 失败
       console.log(err)
@@ -59,15 +59,15 @@ method: 'post',
 
 
 
-const sleep = function (ms){
+/*const sleep = function (ms){
   return new Promise(resolve => setTimeout(resolve, ms))
   
 }
 const request = async function(){
-  for(let i=0;i<2;i++){
+  for(let i=0;i<2;i++){*/
     aa();
   
-    await sleep(3000);
+   /* await sleep(3000);
   }
 }
 
