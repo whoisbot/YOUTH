@@ -46,7 +46,7 @@ method: 'post',
     }).then((res) => { 
       //then 成功
  const data = res.data;
- console.log("ok");
+ console.log("奖励"data.profit);
 
     }).catch((err) => {
       //catch 失败
