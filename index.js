@@ -46,7 +46,7 @@ method: 'post',
     }).then((res) => { 
       //then 成功
  const data = res.data;
- console.log("奖励="data.articleInReadAccount.profit   "奖励次数="data.articleInReadAccount.total_profit_num);
+ console.log("ok");
 
     }).catch((err) => {
       //catch 失败
