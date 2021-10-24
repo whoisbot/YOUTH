@@ -1,0 +1,93 @@
+const axios = require('axios');
+
+let cookieArr =$store.get('token'),cookie='',myuid='';
+
+
+
+
+
+(async() => {
+  
+    for (let i = 0; i < cookieArr.length; i++) {
+                if (cookieArr[i]) {
+                    cookie = cookieArr[i];
+    
+    myuid=cookie.substring(0,32);
+    
+    await taskone(myuid);
+    await sleep(2000);
+    await box(myuid);
+    
+                }
+                await sleep(1000);
+    }
+  
+
+    
+    })()
+
+
+
+        
+    
+    //获取分享时间字符串
+  
+    
+//get 函数
+function taskone(kdcookie){
+      
+ 
+    
+    
+ axios({
+    url : 'https://wlkdapi.zhongchuanjukan.com/task/inread/account',
+method: 'post',
+
+
+        data:{"token":kdcookie,"taskid":1,"sysname":"wlkd"},
+   headers:
+{"Accept": "*/*","Accept-Encoding": "gzip, deflate, br","Accept-Language": "zh-CN,zh-Hans;q=0.9","Connection": "keep-alive","Content-Type": "application/json;charset=utf-8","Host": "wlkdapi.zhongchuanjukan.com","Origin": "https://wlkdapi.zhongchuanjukan.com","User-Agent": "Mozilla/5.0 (iPad; CPU OS 15_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148","X-Requested-With": "XMLHttpRequest"}
+    }).then((res) => { 
+      //then 成功
+ const data = res.data;
+ console.log("阅读20篇奖励"+data.profit+data.msg_desc);
+
+    }).catch((err) => {
+      //catch 失败
+      console.log(err)
+      
+    
+    });
+  }
+
+  function box(kdcookie){
+      
+ 
+    
+    
+    axios({
+       url : 'https://wlkdapi.zhongchuanjukan.com/task/box/profit',
+   method: 'post',
+   
+   
+    data:{"userid":null,"device_userid":"","sysname":"wlkd","appversioncode":null,"appversion":null,"brand":"apple","model":"iUnknown","token":kdcookie,"channel":null,"skey":null,"adv_provider":null,"os":"android","osversion":null,"darkmode":1,"threadid":null,"spread":null,"from":null,"remarks":null,"ip":null,"province":null,"city":null,"hour":null,"date":null,"time":null,"requestid":null,"event":null,"box_code":"taskbox_one"},
+
+      headers:
+      {"Accept": "*/*","Accept-Encoding": "gzip, deflate, br","Accept-Language": "zh-CN,zh-Hans;q=0.9","Connection": "keep-alive","Content-Type": "application/json;charset=utf-8","Host": "wlkdapi.zhongchuanjukan.com","User-Agent": "Mozilla/5.0 (iPad; CPU OS 15_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148","X-Requested-With": "XMLHttpRequest"}
+       }).then((res) => { 
+         //then 成功
+    const data = res.data;
+    console.log("第一个宝箱奖励"+data.profit+data.msg_desc);
+       }).catch((err) => {
+         //catch 失败
+         console.log(err)
+         
+       
+       });
+     }
+
+
+const sleep = function (ms){
+  return new Promise(resolve => setTimeout(resolve, ms))
+  
+}
