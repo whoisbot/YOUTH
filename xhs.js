@@ -10,9 +10,10 @@ var notify = function (xhtybe,xhword) {
      url: "http://www.pushplus.plus/send",
      header: {"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8","Accept-Encoding": "gzip, deflate","Accept-Language": "zh-CN,zh-Hans;q=0.9","Connection": "close","Host": "www.pushplus.plus","Upgrade-Insecure-Requests": "1","User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Safari/605.1.15"},
      data:{
-    "token":"d0e7b2202f09459cba830108b6946889",
+    "token":"token",
     "title":xhtybe,
     "content":xhword,
+    "topic":"jdplus",
     "template":"html"
 }
   }).then((res) => {
@@ -68,14 +69,14 @@ var aa = function () {
     const data = res.data;
     const obj = JSON.parse(data);
     const xhsinventory = obj.data.lst;
-
+console.log("我还活着");
 
     for (let i = 0; i < xhsinventory.length; i++) {
       if (jiankong.length) {
         for (let j = 0; j < jiankong.length; j++) {
           if (jiankong[j] == xhsinventory[i].name && xhsinventory[i].remainNum > 0&&$store.get(xhsinventory[i].name)) {
 
- notify("监控项目库存增加",xhsinventory[i].name + "    " + "需要积分" + xhsinventory[i].point + "\n" + "数量" + xhsinventory[i].remainNum);
+ notify("监控项目库存增加",xhsinventory[i].name + "   " + "需要积分" + xhsinventory[i].point + "\n" + "数量" + xhsinventory[i].remainNum);
 $store.put(0, xhsinventory[i].name);
    
 
